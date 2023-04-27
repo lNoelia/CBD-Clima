@@ -1,0 +1,44 @@
+{% extends 'master.html' %}
+
+
+{% block contenido %}
+<div class="container" style="text-align: justify;margin:15px;padding:15px;">
+        <h3>Noelia López Durán & Alejandro Carrasco Núñez</h3>
+
+<hr>
+ 	    <h3>Contenido </h3>
+	    <p>Se desea construir una pagina web, que permita buscar obras de arte para la decoración del hogar. Además se recomendará obras a usuarios en función de los gustos de éstos.</p>
+		
+		<p>Almacenar la información siguiente:</p>
+
+	<ol type="a">
+		<li>Categoria: IdCategoria y Nombre.</li>
+		<li>Usuario: IdUsuario y Nombre.</li>
+		<li>Obra: IdObra, Titulo, Descripcion, Existencias, UrlImagen, Precio, Categorias y Puntuaciones.</li>
+		<li>Puntuacion: IdUsuario, IdObra, Puntuacion, Fecha y Descripcion.</li>
+	</ol>
+
+	<p>Extrayendo los datos de la página web: <a href="https://www.decorarconarte.com">https://www.decorarconarte.com</a></p>
+
+	<p>Se pide un programa con un menú principal, que permita las siguientes opciones:</p>
+
+	<ol type="a">
+		<li>Listado de todos los usuarios que han puntuado al menos 1 obra</li>
+		<li>Listado con las 12 obras mejor puntuadas en orden decreciente. Para el calculo de la puntuacion se ha hecho la media de todas las puntuaciones de la obra.</li>
+		<li>Dada una categoría escogida mediante un selector, muestre todas las obras de esa categoría.</li>
+		<li>Dada una obra escogida mediante un selector (solo entre las puntuadas), muestre todas sus puntuaciones.</li>
+		<li>Dado un usuario escogido (entre los que han puntuado al menos una obra), le recomiende obras que no haya puntuado, usando un sistema de recomendación Basado en Contenido.</li>
+		<li>Dado un precio en formato inglés (punto como separador de decimales) y sin comas, le muestre obras con un precio por debajo del dado usando un esquema Whoosh.</li>
+	</ol>
+	<p>Para el esquema Whoosh hace falta poblar primero la Base de Datos</p>
+	<p>Para el sistema de recomendación primero es necesario definir las preferencias del usuario y las características de las obras:</p>
+
+	<ul>
+		<li>Para establecer las características de las obras establecer las diez categorías más frecuentes de cada obra y almacenarlas.</li>
+		<li>Para determinar las preferencias de un usuario, tomar las cinco obras mejor puntuadas, y obtener las diez categorías más frecuentes de esas obras. Esas categorías definen el perfil del usuario.</li>
+		<li>Comparar el perfil del usuario con las características de las obras y devolver los más parecidos (p.e. usando el coeficiente de Dice).</li>
+	</ul>
+
+		    <hr>
+</p>
+{% endblock %}
