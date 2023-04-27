@@ -18,7 +18,20 @@ for r in climatologiaDiaria_details:
     print(r['fecha'])
 
 @require_http_methods("GET")
+def master(request):
+    return render(request,"master.html", {'STATIC_URL':settings.STATIC_URL})
+
+def index(request):
+    return render(request,"index.html", {'STATIC_URL':settings.STATIC_URL})
+
+@require_http_methods("GET")
 def climatologiaDiariaList(request):
     piezasLista = climatologiaDiaria.find({})
-    context={'listaClimaDiario' : piezasLista }
-    return render(request=request,template_name="climaDiario/climatologiaDiaria.html",context=context)
+    context={'listaClimaDiario' : piezasLista, 'STATIC_URL':settings.STATIC_URL }
+    return render(request,"climaDiario/climatologiaDiaria.html",context)
+
+@require_http_methods("GET")
+def estadisticas(request):
+    piezasLista = climatologiaDiaria.find({})
+    context={'listaClimaDiario' : piezasLista , 'STATIC_URL':settings.STATIC_URL}
+    return render(request,"climaDiario/estadisticas.html",context)
