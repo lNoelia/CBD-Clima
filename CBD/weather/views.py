@@ -9,10 +9,10 @@ client = pymongo.MongoClient('mongodb://localhost:27017/')
 dbname = client['clima']
 
 #Define Collection
-climatologiaDiaria = dbname['climatologiasDiarias']
+climatologiaDiaria = dbname['ClimatologiaDiaria']
 
 
-climatologiaDiaria_details = climatologiaDiaria.find({})
+climatologiaDiaria_details = climatologiaDiaria.find({}, limit=5)
 
 for r in climatologiaDiaria_details:
     print(r['fecha'])
@@ -26,12 +26,12 @@ def index(request):
 
 @require_http_methods("GET")
 def climatologiaDiariaList(request):
-    piezasLista = climatologiaDiaria.find({})
+    piezasLista = climatologiaDiaria.find({}, limit=20)
     context={'listaClimaDiario' : piezasLista, 'STATIC_URL':settings.STATIC_URL }
     return render(request,"climaDiario/climatologiaDiaria.html",context)
 
 @require_http_methods("GET")
 def estadisticas(request):
-    piezasLista = climatologiaDiaria.find({})
+    piezasLista = climatologiaDiaria.find({}, limit=20)
     context={'listaClimaDiario' : piezasLista , 'STATIC_URL':settings.STATIC_URL}
     return render(request,"climaDiario/estadisticas.html",context)
