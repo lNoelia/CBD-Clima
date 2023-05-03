@@ -31,7 +31,7 @@ def climatologiaDiariaList(request):
             if search_form.is_valid():
                 keyword = search_form.cleaned_data['keyword']
                 # piezasLista = climatologiaDiaria.find({'nombre': keyword}, limit=20)
-                piezasLista = climatologiaDiaria.find({'nombre': {'$regex':keyword}}, limit=20)
+                piezasLista = climatologiaDiaria.find({'nombre': {'$regex':keyword, '$options':'i'}}, limit=20)
     return render(request,"climaDiario/climatologiaDiaria.html",{'listaClimaDiario' : piezasLista, 'STATIC_URL':settings.STATIC_URL, 'search_form':search_form })
 
 @require_http_methods("GET")

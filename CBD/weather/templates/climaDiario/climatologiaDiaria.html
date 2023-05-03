@@ -9,7 +9,7 @@
   <form method="post" action="" id="searchform" style="font-size:15px;display:flex;align-items:center;margin-right:5px;">
     {% csrf_token %}
     {{search_form.as_p}}
-    <button style="margin-left:10px;"><i class="glyphicon glyphicon-search"></i></button>
+    <button style="margin-left:10px;">BUSCAR</button>
   </form>
   <form action="{% url 'climaDiario' %}">
     <input value="Borrar" type="submit" style="font-size: 14px;color:black;"></input>
