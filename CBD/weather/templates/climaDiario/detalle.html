@@ -1,0 +1,27 @@
+{% extends 'master.html' %}
+
+
+{% block contenido %}
+
+<center><h3><strong>climatologia Diaria</strong></h3></center>
+
+
+<div class="container center" style="width: 50%;">
+  <div class="col-sm center" style="border: solid 1px #000000;">
+    <center><h2>{{pieza.nombre}}, {{pieza.indicativo}}</h2>
+    <div style="font-size: 15px;">Fecha: {{pieza.fecha}}</div>
+    <div style="font-size: 15px;">Provincia: {{pieza.provincia}}</div>
+    <div style="font-size: 15px;">Altitud: {{pieza.altitud}}</div>
+    <div style="font-size: 15px;">Temperatura media: {{pieza.tmed}}</div>
+    <div style="font-size: 15px;">Precipitaciones: {{pieza.prec}}</div>
+    <div style="font-size: 15px;">Temperatura mínima: {{pieza.tmin}}, Hora: {{pieza.horatmin}}</div>
+    <div style="font-size: 15px;">Temperatura máxima: {{pieza.tmax}}, Hora: {{pieza.horatmax}}</div>
+    <div style="font-size: 15px;">Dirección: {{pieza.dir}}</div>
+    <div style="font-size: 15px;">Velocidad media: {{pieza.velmedia}}</div>
+    <div style="font-size: 15px;">Racha: {{pieza.racha}}, hora: {{pieza.horaracha}}</div>
+    <div style="font-size: 15px;">Provincia: {{pieza.sol}}</div>
+    <div style="font-size: 15px;">Provincia: {{pieza.presMax}}, Hora: {{pieza.horaPresMax}}</div>
+    <div style="font-size: 15px;">Provincia: {{pieza.presMin}}, Hora: {{pieza.horaPresMin}}</div></center>
+  </div>
+</div>
+  {% endblock %}

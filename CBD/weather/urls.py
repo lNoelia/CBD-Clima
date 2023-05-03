@@ -7,4 +7,6 @@ urlpatterns = [
             path('master',views.master),
             path('index',views.index),
             path('climaDiario/',views.climatologiaDiariaList, name="climaDiario"),
-            path('estadisticas',views.estadisticas),]
+            path('estadisticas',views.estadisticas),
+            path('detalle/<str:dato_id>', views.detalle, name="detalle"),
+            ]
