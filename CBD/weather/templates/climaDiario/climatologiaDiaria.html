@@ -5,43 +5,54 @@
 
 <center><h3><strong>climatologia Diaria</strong></h3></center>
 
+<div style="display:flex;justify-content:center;align-items:center;">
+  <form method="post" action="" id="searchform" style="font-size:15px;display:flex;align-items:center;margin-right:5px;">
+    {% csrf_token %}
+    {{search_form.as_p}}
+    <button style="margin-left:10px;"><i class="glyphicon glyphicon-search"></i></button>
+  </form>
+  <form action="{% url 'climaDiario' %}">
+    <input value="Borrar" type="submit" style="font-size: 14px;color:black;"></input>
+  </form>
+</div>
 
 <div class="container justify" style="width: 90%;">
   <table class="table align-middle mb-0 bg-white">
       <thead class="bg-light">
         <tr>
+          <th>Ver detalle</th>
+          <th>Nombre, indicativo</th>
           <th>Fecha</th>
-          <th>Nombre</th>
-          <th>Provincia</th>
           <th>Temp media</th>
-          <th>tmin</th>
-          <th>tmax</th>
+          <th>Precipitaciones</th>
+          <th>tmin, Hora tmin</th>
+          <th>tmax, hora tmax</th>
+          <!-- fecha, indicativo, nombre, provincia, altitud, tmed, prec, tmin, horatmin, tmax,horatmax, dir, velmedia, racha, horaracha, presMax, horaPresMax, presMin, horaPresMin -->
         </tr>
       </thead>
       <tbody id="myTable">
         {% for medida in listaClimaDiario %}
           <tr>
             <td>
-              <div class="d-flex align-items-center">
-                <div class="ms-3">
-                  <p class="fw-bold mb-1">{{ medida.fecha }}</p>
-                </div>
-              </div>
+              <p class="fw-normal mb-1">Ver detalle</p>
             </td>
             <td>
-                <p class="fw-normal mb-1">{{ medida.nombre }}</p>
+              <p class="fw-normal mb-1">{{ medida.nombre }}, {{medida.indicativo}}</p>
+          </td>
+            <td>
+                <p class="fw-normal mb-1">{{ medida.fecha }}</p>
             </td>
             <td>
-              <p class="fw-normal mb-1">{{ medida.provincia}}</p>
+              <p class="fw-normal mb-1">{{ medida.tmed}}</p>
             </td>
             <td>
-              <p class="fw-normal mb-1">{{ medida.tmed }}</p>
+              <p class="fw-normal mb-1">{{ medida.prec }}</p>
             </td>
             <td>
-                <p class="fw-normal mb-1">{{ medida.tmin }}</p>
+                <p class="fw-normal mb-1">{{ medida.tmin }}, {{ medida.horatmin }}</p>
             </td>
             <td>
-                <p class="fw-normal mb-1">{{ medida.tmax }}</p>
+                <p class="fw-normal mb-1">{{ medida.tmax }}, {{ medida.horatmax }}</p>
             </td>
           </tr>
         {% endfor %}
