@@ -6,5 +6,5 @@ urlpatterns = [
             path('',views.master),
             path('master',views.master),
             path('index',views.index),
-            path('climaDiario',views.climatologiaDiariaList),
+            path('climaDiario/',views.climatologiaDiariaList, name="climaDiario"),
             path('estadisticas',views.estadisticas),]
