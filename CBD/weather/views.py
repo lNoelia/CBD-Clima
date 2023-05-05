@@ -38,8 +38,10 @@ def climatologiaDiariaList(request):
             search_form = SearchForm(request.POST)
             if search_form.is_valid():
                 keyword = search_form.cleaned_data['keyword']
-                piezasLista = climatologiaDiaria.find({'nombre': {'$regex':keyword, '$options':'i'}}, limit=20)
-                for p in climatologiaDiaria.find({'nombre': {'$regex':keyword, '$options':'i'}}, limit=20):
+                piezasLista = climatologiaDiaria.find({ '$or': [{'nombre': {'$regex':keyword, '$options':'i'}},
+                                                       {'provincia': {'$regex':keyword, '$options':'i'}}]}, limit=20)
+                for p in climatologiaDiaria.find({ '$or': [{'nombre': {'$regex':keyword, '$options':'i'}},
+                                                       {'provincia': {'$regex':keyword, '$options':'i'}}]}, limit=20):
                     lista.append(p['_id'])
                 listadas = zip(piezasLista, lista)
     return render(request,"climaDiario/climatologiaDiaria.html",{'STATIC_URL':settings.STATIC_URL, 
