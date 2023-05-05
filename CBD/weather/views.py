@@ -16,9 +16,6 @@ climatologiaDiaria = dbname['ClimatologiaDiaria']
 
 climatologiaDiaria_details = climatologiaDiaria.find({}, limit=5)
 
-for r in climatologiaDiaria_details:
-    print(r['_id'])
-
 @require_http_methods("GET")
 def master(request):
     return render(request,"master.html", {'STATIC_URL':settings.STATIC_URL})
