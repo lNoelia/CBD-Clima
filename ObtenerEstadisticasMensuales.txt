@@ -1,0 +1,73 @@
+[
+  {
+    $addFields: {
+      mes: {
+        $month: {
+          $dateFromString: {
+            dateString: "$fecha",
+            format: "%Y-%m-%d",
+          },
+        },
+      },
+    },
+  },
+  {
+    $group: {
+      _id: {
+        indicativo: "$indicativo",
+        mes: "$mes",
+        provincia: "$provincia",
+        nombre: "$nombre",
+      },
+      tmed: {
+        $avg: "$tmed",
+      },
+      tmax: {
+        $max: "$tmax",
+      },
+      tmin: {
+        $min: "$tmin",
+      },
+      presMax: {
+        $max: "$presMax",
+      },
+      presmin: {
+        $min: "$presMin",
+      },
+      velmedia: {
+        $avg: "$velmedia",
+      },
+      racha: {
+        $max: "$racha",
+      },
+    },
+  },
+  {
+    $project: {
+      tmed: {
+        $round: ["$tmed", 3],
+      },
+      tmax: {
+        $round: ["$tmax", 3],
+      },
+      tmin: {
+        $round: ["$tmin", 3],
+      },
+      presMax: {
+        $round: ["$presMax", 3],
+      },
+      presmin: {
+        $round: ["$presmin", 3],
+      },
+      velmedia: {
+        $round: ["$velmedia", 3],
+      },
+      racha: {
+        $round: ["$racha", 3],
+      },
+    },
+  },
+  {
+    $out: "Estadisticas",
+  },
+]

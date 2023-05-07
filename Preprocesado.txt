@@ -1,0 +1,111 @@
+[
+  {
+    $set: {
+      tmed: {
+        $replaceOne: {
+          input: "$tmed",
+          find: ",",
+          replacement: ".",
+        },
+      },
+      altitud: {
+        $replaceOne: {
+          input: "$altitud",
+          find: ",",
+          replacement: ".",
+        },
+      },
+      prec: {
+        $replaceOne: {
+          input: "$prec",
+          find: ",",
+          replacement: ".",
+        },
+      },
+      tmin: {
+        $replaceOne: {
+          input: "$tmin",
+          find: ",",
+          replacement: ".",
+        },
+      },
+      tmax: {
+        $replaceOne: {
+          input: "$tmax",
+          find: ",",
+          replacement: ".",
+        },
+      },
+      dir: {
+        $replaceOne: {
+          input: "$dir",
+          find: ",",
+          replacement: ".",
+        },
+      },
+      velmedia: {
+        $replaceOne: {
+          input: "$velmedia",
+          find: ",",
+          replacement: ".",
+        },
+      },
+      racha: {
+        $replaceOne: {
+          input: "$racha",
+          find: ",",
+          replacement: ".",
+        },
+      },
+      presMax: {
+        $replaceOne: {
+          input: "$presMax",
+          find: ",",
+          replacement: ".",
+        },
+      },
+      presMin: {
+        $replaceOne: {
+          input: "$presMin",
+          find: ",",
+          replacement: ".",
+        },
+      },
+    },
+  },
+  {
+    $addFields: {
+      altitud: {
+        $toDecimal: "$altitud",
+      },
+      tmed: {
+        $toDecimal: "$tmed",
+      },
+      tmax: {
+        $toDecimal: "$tmax",
+      },
+      tmin: {
+        $toDecimal: "$tmin",
+      },
+      dir: {
+        $toDecimal: "$dir",
+      },
+      velmedia: {
+        $toDecimal: "$velmedia",
+      },
+      racha: {
+        $toDecimal: "$racha",
+      },
+      presMax: {
+        $toDecimal: "$presMax",
+      },
+      presMin: {
+        $toDecimal: "$presMin",
+      },
+    },
+  },
+  {
+    $out:
+      "ClimatologiaDiaria",
+  },
+]
