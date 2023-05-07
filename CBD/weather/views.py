@@ -49,6 +49,10 @@ def detalle(request, dato_id):
 
 
 def estadisticas(request):
-    piezasLista = estadisticasDatos.find({}, limit=20)
-    context={'listaClimaDiario' : piezasLista , 'STATIC_URL':settings.STATIC_URL}
+    estadisticas = estadisticasDatos.find({}, limit=20)
+    lista=[]
+    for e in estadisticasDatos.find({}, limit=20):
+        lista.append(e['_id'])
+    listadas = zip(estadisticas, lista)
+    context={'listadas' : listadas , 'STATIC_URL':settings.STATIC_URL}
     return render(request,"climaDiario/estadisticas.html",context)
