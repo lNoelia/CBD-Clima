@@ -11,8 +11,8 @@ client = pymongo.MongoClient('mongodb://localhost:27017/')
 dbname = client['clima']
 
 #Define Collection
-climatologiaDiaria = dbname['climatologiaDiaria']
-estadisticasDatos = dbname['estadisticas']
+climatologiaDiaria = dbname['ClimatologiaDiaria']
+estadisticasDatos = dbname['Estadisticas']
 
 
 @require_http_methods("GET")

@@ -9,9 +9,15 @@
   <table class="table align-middle mb-0 bg-white">
       <thead class="bg-light">
         <tr>
-          <th>Indicativo, Mes</th>
+          <th>Nombre, Mes</th>
           <th>Temperatura media</th>
           <th>Temperatura máxima</th>
+          <th>Temperatura mínima</th>
+          <th>Presión máxima</th>
+          <th>Presión mínima</th>
+          <th>Velocidad media</th>
+          <th>Racha</th>
+
         </tr>
       </thead>
       <tbody id="myTable">
@@ -19,13 +25,28 @@
           <tr>
             
             <td>
-                <p class="fw-normal mb-1">{{e.indicativo}}, {{e.mes}}</p>
+                <p class="fw-normal mb-1">{{e.nombre}}, {{e.mes}}</p>
             </td>
             <td>
               <p class="fw-normal mb-1">{{ i.tmed }}</p>
             </td>
             <td>
                 <p class="fw-normal mb-1">{{ i.tmax }}</p>
+            </td>
+            <td>
+              <p class="fw-normal mb-1">{{ i.tmin }}</p>
+            </td>
+            <td>
+              <p class="fw-normal mb-1">{{ i.presMax }}</p>
+            </td>
+            <td>
+              <p class="fw-normal mb-1">{{ i.presmin }}</p>
+            </td>
+            <td>
+              <p class="fw-normal mb-1">{{ i.velmedia }}</p>
+            </td>
+            <td>
+              <p class="fw-normal mb-1">{{ i.racha }}</p>
             </td>
           </tr>
         {% endfor %}
