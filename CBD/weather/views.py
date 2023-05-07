@@ -54,5 +54,17 @@ def estadisticas(request):
     for e in estadisticasDatos.find({}, limit=20):
         lista.append(e['_id'])
     listadas = zip(estadisticas, lista)
-    context={'listadas' : listadas , 'STATIC_URL':settings.STATIC_URL}
-    return render(request,"climaDiario/estadisticas.html",context)
+    search_form = SearchForm()
+    if request.method == 'POST':
+        lista=[]
+        search_form = SearchForm(request.POST)
+        if search_form.is_valid():
+            keyword = search_form.cleaned_data['keyword']
+            estadisticas = estadisticasDatos.find({ '$or': [{'_id.nombre': {'$regex':keyword, '$options':'i'}},
+                                                    {'_id.provincia': {'$regex':keyword, '$options':'i'}}]}, limit=20)
+            for e in estadisticasDatos.find({ '$or': [{'_id.nombre': {'$regex':keyword, '$options':'i'}},
+                                                    {'_id.provincia': {'$regex':keyword, '$options':'i'}}]}, limit=20):
+                lista.append(e['_id'])
+            listadas = zip(estadisticas, lista)
+    return render(request,"climaDiario/estadisticas.html",{'listadas' : listadas , 'search_form':search_form,
+                                                           'STATIC_URL':settings.STATIC_URL})

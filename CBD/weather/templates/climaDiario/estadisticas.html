@@ -4,6 +4,16 @@
 {% block contenido %}
 <center><h3><strong>Estadísticas</strong></h3></center>
 
+<div style="display:flex;justify-content:center;align-items:center;">
+  <form method="post" action="" id="searchform" style="font-size:15px;display:flex;align-items:center;margin-right:5px;">
+    {% csrf_token %}
+    {{search_form.as_p}}
+    <button style="margin-left:10px;">BUSCAR</button>
+  </form>
+  <form action="{% url 'estadisticas' %}">
+    <input value="Borrar" type="submit" style="font-size: 14px;color:black;"></input>
+  </form>
+</div>
 
 <div class="container justify" style="width: 90%;">
   <table class="table align-middle mb-0 bg-white">
